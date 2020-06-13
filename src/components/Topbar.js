@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { h1 } from './Topbar.css';
 
-const Topbar = ()=>{
+const Topbar = () => {
     return (
         <Header as="h1" className={h1}>
             <Link to="/">

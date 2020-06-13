@@ -4,7 +4,7 @@ import { Header, Container, Divider, Icon } from 'semantic-ui-react';
 import { pullRight } from './layout.css';
 import Topbar from './Topbar';
 
-const Layout = ({children})=>{
+const Layout = ({children}) => {
     return (
         <Container>
             <Topbar />

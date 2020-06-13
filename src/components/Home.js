@@ -3,7 +3,7 @@ import loadable from '@loadable/component';
 
 const Layout = loadable(() => import('./Layout'));
 
-const Home = ()=>{
+const Home = () => {
     return (
         <Layout>
             <p>Welcome to hos</p>
