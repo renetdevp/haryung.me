@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Container, Divider, Icon } from 'semantic-ui-react';
+import { Container, Divider, Icon } from 'semantic-ui-react';
 
 import { pullRight } from './layout.css';
 import Topbar from './Topbar';

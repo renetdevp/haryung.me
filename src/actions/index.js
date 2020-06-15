@@ -4,28 +4,17 @@ import axios from 'axios';
 export const GET_POSTS_LIST = 'GET_POSTS_LIST';
 
 //  action creator funcs
-export const getPostsData = (data) => {
-    return {
-        type: GET_POSTS_LIST,
-        data
-    };
-};
+export const postsCreator = (data) => ({ type: GET_POSTS_LIST, data });
 
 //  action funcs
-export const getPostsList = () => {
+export const postsAction = () => {
     //  async/await를 사용하려면 babel-polyfill import 필요
-    // try {
-    //     const res = await axios.get('https://ko.reactjs.org/docs/hooks-effect.html');
-    //     dispatch(getPostsData(res.data));
-    // } catch (err){
-    //     throw err;
-    // }
     
     return (dispatch) => {
-        return axios.get('https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Accept')
-            .then((res => {
-                dispatch(getPostsData(res.data));
-            }))
+        return axios.get('http://haryung.me:1234/posts')
+            .then(({ data }) => {
+                dispatch(postsCreator(data.posts));
+            })
             .catch((err) => {
                 throw(err);
             });
