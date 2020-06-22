@@ -1,6 +1,15 @@
 import { GET_POSTS_LIST } from '../actions';
 
-const reducerGetPosts = (state = [], action) => {
+const initialState = {
+    posts: [
+        {
+            "title": "this is",
+            "content": "initialState"
+        }
+    ]
+};
+
+const reducerGetPosts = (state = initialState, action) => {
     switch (action.type){
         case GET_POSTS_LIST:
             return {
