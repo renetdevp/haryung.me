@@ -1,14 +1,12 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const common = require('./webpack.common');
 const port = process.env.PORT || 80;
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'development',
-    entry: {
-        vendor: ['semantic-ui-react'],
-        app: './src/index.js'
-    },
     output: {
         filename: '[name].[hash].js',
         publicPath: '/'
@@ -52,17 +50,5 @@ module.exports = {
         historyApiFallback: true,
         open: false,
         hot: true   
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    chunks: 'initial',
-                    test: 'vendor',
-                    name: 'vendor',
-                    enforce: true
-                }
-            }
-        }
     }
-};
+});

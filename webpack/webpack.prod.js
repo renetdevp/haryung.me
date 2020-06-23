@@ -1,19 +1,16 @@
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const port = process.env.PORT || 80;
+const common = require('./webpack.common');
+const { rootDir } = require('./common-path');
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'production',
-    entry: {
-        vendor: ['semantic-ui-react'],
-        app: './src/index.js'
-    },
     output: {
         filename: 'static/[name].[hash].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(rootDir, 'dist'),
         publicPath: '/'
     },
     devtool: 'source-map',
@@ -64,17 +61,5 @@ module.exports = {
             filename: 'styles/styles.[hash].css',
             allChunks: true
         })
-    ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    chunks: 'initial',
-                    test: 'vendor',
-                    name: 'vendor',
-                    enforce: true
-                }
-            }
-        }
-    }
-};
+    ]
+});
