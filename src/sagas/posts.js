@@ -1,12 +1,13 @@
-import { all, fork, put, throttle, call } from 'redux-saga/effects';
+import { all, fork, put, throttle, call, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
-    GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAIL
+    GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAIL,
+    ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAIL
 } from '../reducers/postsReducer';
 
 function getPostsAPI() {
-    return axios.get('http://haryung.me:1234/posts');
+    return axios.get('/posts');
 }
 
 function* getPosts(action) {
@@ -29,8 +30,35 @@ function* watchGetPosts() {
     yield throttle(2000, GET_POSTS_REQUEST, getPosts);
 }
 
+function addPostAPI(postData) {
+    return axios.post('/posts', postData, {
+        withCredentials: true
+    });
+}
+
+function* addPost(action) {
+    try {
+        const result = yield call(addPostAPI, action.data);
+
+        yield put({
+            type: ADD_POST_SUCCESS,
+            data: result.data
+        });
+    } catch (err) {
+        yield put({
+            type: ADD_POST_FAIL,
+            error: err
+        });
+    }
+}
+
+function* watchAddPost() {
+    yield takeLatest(ADD_POST_REQUEST, addPost);
+}
+
 export default function* postsSaga() {
     yield all([
         fork(watchGetPosts),
+        fork(watchAddPost),
     ]);
 };

@@ -4,15 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GET_POSTS_REQUEST } from '../reducers/postsReducer';
 
 const PostsList = () => {
+    const dispatch = useDispatch();
+    const { posts, getPostsErrmsg } = useSelector((state) => state.post, []);
+
     useEffect(() => {
         dispatch({
             type: GET_POSTS_REQUEST
         });
     }, []); //  변경될 시 effect를 재실행할 변수를 두 번째 인자인 배열에 넣어주면 된다. ex) [props.freind.id]
-
-    const dispatch = useDispatch();
-    const { posts } = useSelector((state) => state.post, []) || [];
-    const { getPostsErrmsg } = useSelector((state) => state.post, []) || '';
 
     return (
         <div className="PostsList">

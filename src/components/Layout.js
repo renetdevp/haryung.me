@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Divider, Icon } from 'semantic-ui-react';
 
-import { pullRight } from './layout.css';
+import { pullRight } from '../styles/layout.css';
 import Topbar from './Topbar';
 
 const Layout = ({children}) => {

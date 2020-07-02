@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import { h1 } from './Topbar.css';
+import { h1 } from '../styles/Topbar.css';
 
 const Topbar = () => {
     return (
@@ -11,7 +11,7 @@ const Topbar = () => {
                 Haryung.me
             </Link>
         </Header>
-    )
+    );
 };
 
 export default Topbar;

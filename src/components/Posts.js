@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
-import loadable from '@loadable/component';
+import React from 'react';
 
 import PostsList from '../containers/PostsList';
 
-const Layout = loadable(() => import('./Layout'));
-
 const Posts = () => {
     return (
-        <Layout>
+        <div>
             <p>This is posts page</p>
             <PostsList />
-        </Layout>
-    )
+        </div>
+    );
 };
 
 export default Posts;

@@ -1,20 +1,22 @@
 import React from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-import loadable from '@loadable/component';
 
-const Home = loadable(() => import('./Home'));
-const Posts = loadable(() => import('./Posts'));
+import Layout from './Layout';
+import Home from './Home';
+import Posts from './Posts';
+import AddPost from './AddPost';
 
 const App = () => {
     return (
-        <Router>
-            <div>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/posts" component={Posts} />
-                </Switch>
-            </div>
-        </Router>
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/posts/addpost" component={AddPost} />
+                        <Route exact path="/posts" component={Posts} />
+                    </Switch>
+                </Layout>
+            </Router>
     );
 };
 
