@@ -10,10 +10,12 @@ const AddPost = () => {
 
     const addPost = useCallback((e) => {
         e.preventDefault();
+
+        console.log('hos addpost');
     });
 
     return (
-        <Form>
+        <Form onSubmit={addPost}>
             <Form.Group className={fields}>
                 <Form.Input label="Title" placeholder="hos go?" className={field} />
                 <Form.TextArea label="Content" placeholder="hos gogo" className={field} />
