@@ -7,7 +7,7 @@ import { ADD_POST_REQUEST } from '../reducers/postsReducer';
 
 const AddPost = () => {
     const dispatch = useDispatch();
-    const { addPostErrmsg } = useSelector((state) => state.post, []);
+    // const { addPostErrmsg } = useSelector((state) => state.post, []);
     const [titleText, setTitleText] = useState('');
     const [contentText, setContentText] = useState('');
 
@@ -29,14 +29,13 @@ const AddPost = () => {
     const addPost = useCallback((e) => {
         e.preventDefault();
 
-        console.log(`Title: ${titleText}, Content: ${contentText}`);
-        // dispatch({
-        //     type: ADD_POST_REQUEST,
-        //     data: {
-        //         title: titleText,
-        //         content: contentText
-        //     }
-        // });
+        dispatch({
+            type: ADD_POST_REQUEST,
+            data: {
+                title: titleText,
+                content: contentText
+            }
+        });
     });
 
     return (

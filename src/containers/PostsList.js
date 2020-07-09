@@ -18,7 +18,7 @@ const PostsList = () => {
             {
                 getPostsErrmsg === ''?
                 posts && posts.map((e, i) => (
-                    <div key={i}>{`Title: ${e.title}, Content: ${e.content}`}</div>
+                    <div key={i}>{`Title: ${e.title}, Id: ${e._id}`}</div>
                 ))  //  div를 return 하는 것을 기억할 것, 함수 내에 스크립트로 쓰는줄 알고 삽질함 ㅡㅡ
                 :'error'
             }

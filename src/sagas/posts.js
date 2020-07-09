@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import {
     GET_POSTS_REQUEST, GET_POSTS_SUCCESS, GET_POSTS_FAIL,
-    ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAIL
+    ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAIL,
+    GET_POST_REQUEST, GET_POST_SUCCESS, GET_POST_FAIL,
 } from '../reducers/postsReducer';
 
 function getPostsAPI() {
@@ -56,9 +57,34 @@ function* watchAddPost() {
     yield takeLatest(ADD_POST_REQUEST, addPost);
 }
 
+function getPostAPI(postId) {
+    return axios.get(`/posts/${postId}`);
+}
+
+function* getPost(action) {
+    try {
+        const { data } = yield call(getPostAPI, action.data);
+
+        yield put({
+            type: GET_POST_SUCCESS,
+            data: data.post
+        });
+    } catch (err) {
+        yield put({
+            type: GET_POST_FAIL,
+            error: err
+        });
+    }
+}
+
+function* watchGetPost() {
+    yield throttle(2000, GET_POST_REQUEST, getPost);
+}
+
 export default function* postsSaga() {
     yield all([
         fork(watchGetPosts),
         fork(watchAddPost),
+        fork(watchGetPost),
     ]);
 };

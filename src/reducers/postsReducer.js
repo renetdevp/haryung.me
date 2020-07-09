@@ -7,12 +7,15 @@ export const GET_POSTS_FAIL = 'GET_POSTS_FAIL';
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAIL = 'ADD_POST_FAIL';
+export const GET_POST_REQUEST = 'GET_POST_REQUEST';
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';
+export const GET_POST_FAIL = 'GET_POST_FAIL';
 
 const initialState = {
     posts: [
         {
-            "title": "this is",
-            "content": "initialState"
+            "title": "this is initialState",
+            "_id": "abcde12345"
         }
     ],
     isGettingPosts: false,
@@ -20,7 +23,11 @@ const initialState = {
     getPostsErrmsg: '',
     isAddingPost: false,
     postAdded: false,
-    addPostErrmsg: ''
+    addPostErrmsg: '',
+    post: {},
+    isGettingPost: false,
+    postGetted: false,
+    getPostErrmsg: ''
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -49,6 +56,18 @@ const postsReducer = (state = initialState, action) => {
             case ADD_POST_FAIL:
                 draft.isAddingPost = false;
                 draft.addPostErrmsg = action.error;
+                break;
+            case GET_POST_REQUEST:
+                draft.isGettingPost = true;
+                break;
+            case GET_POST_SUCCESS:
+                draft.isGettingPost = false;
+                draft.post = action.data;
+                draft.postGetted = true;
+                break;
+            case GET_POST_FAIL:
+                draft.isGettingPost = false;
+                draft.getPostErrmsg = action.error;
                 break;
             default:
                 break;
