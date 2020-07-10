@@ -1,13 +1,17 @@
 import React from 'react';
 
 import PostsList from '../containers/PostsList';
+import { tableHeader, postTitle, postId } from '../styles/PostsList.css';
 
 const Posts = () => {
     return (
-        <div>
-            <p>This is posts page</p>
+        <ul>
+            <li className={tableHeader}>
+                <p className={postTitle}>Title</p>
+                <p className={postId}>Id</p>
+            </li>
             <PostsList />
-        </div>
+        </ul>
     );
 };
 

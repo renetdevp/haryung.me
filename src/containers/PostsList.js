@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { GET_POSTS_REQUEST } from '../reducers/postsReducer';
+import '../styles/PostsList.css';
+import { postTitle, postId } from '../styles/PostsList.css';
 
 const PostsList = () => {
     const dispatch = useDispatch();
@@ -18,7 +20,10 @@ const PostsList = () => {
             {
                 getPostsErrmsg === ''?
                 posts && posts.map((e, i) => (
-                    <div key={i}>{`Title: ${e.title}, Id: ${e._id}`}</div>
+                    <li key={i}>
+                        <p className={postTitle}>{e.title}</p>
+                        <p className={postId}>{e._id}</p>
+                    </li>
                 ))  //  div를 return 하는 것을 기억할 것, 함수 내에 스크립트로 쓰는줄 알고 삽질함 ㅡㅡ
                 :'error'
             }
