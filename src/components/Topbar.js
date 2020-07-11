@@ -6,10 +6,9 @@ import { h1 } from '../styles/Topbar.css';
 
 const Topbar = () => {
     return (
-        <Header as="h1" className={h1}>
-            <Link to="/">
-                Haryung.me
-            </Link>
+        <Header className={h1}>
+            <Link to="/">Home</Link>
+            <Link to="/posts">Posts</Link>
         </Header>
     );
 };

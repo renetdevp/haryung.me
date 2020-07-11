@@ -9,16 +9,16 @@ import Post from '../containers/Post';
 
 const App = () => {
     return (
-            <Router>
-                <Layout>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/posts/addpost" component={AddPost} />
-                        <Route exact path="/posts" component={Posts} />
-                        <Route path="/posts/:id" component={Post} />
-                    </Switch>
-                </Layout>
-            </Router>
+        <Router>
+            <Layout>
+                <Switch>
+                <Route exact path="/" component={Home} />
+                    <Route exact path="/posts/addpost" component={AddPost} />
+                    <Route exact path="/posts" component={Posts} />
+                    <Route path="/posts/:id" component={Post} />
+                </Switch>
+            </Layout>
+        </Router>
     );
 };
 

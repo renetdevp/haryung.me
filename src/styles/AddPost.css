@@ -11,5 +11,5 @@
 
 .pull-right {
     float: right !important;
-    margin: 0 0 1rem 0 !important;
+    margin: 0 .5rem 1rem 0 !important;
 }
