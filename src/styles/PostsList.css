@@ -7,6 +7,11 @@ li {
     font-size: 1.25rem;
     border-radius: .5rem;
     box-shadow: 0 0 .5rem 0 rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in;
+}
+
+li:hover {
+    color: #666;
 }
 
 li > p {
