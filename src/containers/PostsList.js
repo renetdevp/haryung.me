@@ -21,8 +21,8 @@ const PostsList = () => {
             {
                 getPostsErrmsg === ''?
                 posts && posts.map((e, i) => (
-                    <Link to={`/posts/${e._id}`}>
-                        <li key={i}>
+                    <Link to={`/posts/${e._id}`} key={i}>
+                        <li>
                             <p className={postTitle}>{e.title}</p>
                             <p className={postId}>{e._id}</p>
                         </li>
