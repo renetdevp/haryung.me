@@ -32,9 +32,7 @@ function* watchGetPosts() {
 }
 
 function addPostAPI(postData) {
-    return axios.post('/posts', postData, {
-        withCredentials: true
-    });
+    return axios.post('/posts', postData);
 }
 
 function* addPost(action) {

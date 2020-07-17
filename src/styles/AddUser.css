@@ -1,0 +1,15 @@
+.fields {
+    display: inline-block !important;
+    width: 100% !important;
+    padding: 0 5rem !important;
+}
+
+.field {
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+}
+
+.pull-right {
+    float: right !important;
+    margin: 0 .5rem 1rem 0 !important;
+}

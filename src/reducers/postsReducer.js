@@ -32,9 +32,10 @@ const initialState = {
 
 const postsReducer = (state = initialState, action) => {
     return produce(state, (draft) => {
-        switch (action.type){
+        switch (action.type) {
             case GET_POSTS_REQUEST:
                 draft.isGettingPosts = true;
+                draft.postGetted = false;
                 break;
             case GET_POSTS_SUCCESS:
                 draft.isGettingPosts = false;
@@ -59,6 +60,7 @@ const postsReducer = (state = initialState, action) => {
                 break;
             case GET_POST_REQUEST:
                 draft.isGettingPost = true;
+                draft.postGetted = false;
                 break;
             case GET_POST_SUCCESS:
                 draft.isGettingPost = false;
