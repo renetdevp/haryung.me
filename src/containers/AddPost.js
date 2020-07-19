@@ -36,6 +36,10 @@ const AddPost = () => {
                 content: contentText
             }
         });
+
+        setTitleText('');
+        setContentText('');
+        e.target.reset()
     });
 
     return (

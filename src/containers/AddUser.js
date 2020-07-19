@@ -40,6 +40,11 @@ const AddUser = () => {
                 nick: nickText
             }
         });
+
+        setIdText('');
+        setPwText('');
+        setNickText('');
+        e.target.reset();
     });
 
     return (
