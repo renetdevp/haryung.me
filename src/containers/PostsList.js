@@ -31,7 +31,7 @@ const PostsList = () => {
                 :'error'
             }
         </div>
-    )
+    );
 };
 
 export default PostsList;
