@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
     GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAIL,
     ADD_USER_REQUEST, ADD_USER_SUCCESS, ADD_USER_FAIL,
+    LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAIL,
 } from '../reducers/usersReducer';
 
 function getUsersAPI() {
@@ -54,9 +55,34 @@ function* watchAddUser() {
     yield takeLatest(ADD_USER_REQUEST, addUser);
 }
 
+function loginAPI(data) {
+    return axios.post('/users/login', data);
+}
+
+function* login(action) {
+    try {
+        const result = yield call(loginAPI, action.data);
+
+        yield put({
+            type: LOG_IN_SUCCESS,
+            data: result.data
+        });
+    } catch (err) {
+        yield put({
+            type: LOG_IN_FAIL,
+            error: err
+        });
+    }
+}
+
+function* watchLogin() {
+    yield takeLatest(LOG_IN_REQUEST, login);
+}
+
 export default function* usersSaga() {
     yield all([
         fork(watchGetUsers),
         fork(watchAddUser),
+        fork(watchLogin),
     ]);
 };

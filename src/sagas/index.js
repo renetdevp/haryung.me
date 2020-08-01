@@ -5,6 +5,7 @@ import posts from './posts';
 import users from './users';
 
 axios.defaults.baseURL = 'http://haryung.me:1234';
+axios.defaults.withCredentials = true;
 
 export default function* rootSaga() {
     yield all([
