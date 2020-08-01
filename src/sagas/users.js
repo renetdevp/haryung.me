@@ -20,9 +20,11 @@ function* getUsers(action) {
             data: data.users
         });
     } catch (err) {
+        const errmsg = err.response.data.msg;
+
         yield put({
             type: GET_USERS_FAIL,
-            error: err
+            error: errmsg
         });
     }
 }
@@ -37,16 +39,18 @@ function addUserAPI(userData) {
 
 function* addUser(action) {
     try {
-        const result = yield call(addUserAPI, action.data);
+        const { data } = yield call(addUserAPI, action.data);
 
         yield put({
             type: ADD_USER_SUCCESS,
-            data: result.data
+            data: data
         });
     } catch (err) {
+        const errmsg = err.response.data.msg;
+
         yield put({
             type: ADD_USER_FAIL,
-            error: err
+            error: errmsg
         });
     }
 }
@@ -61,16 +65,18 @@ function loginAPI(data) {
 
 function* login(action) {
     try {
-        const result = yield call(loginAPI, action.data);
+        const { data } = yield call(loginAPI, action.data);
 
         yield put({
             type: LOG_IN_SUCCESS,
-            data: result.data
+            data: data
         });
     } catch (err) {
+        const errmsg = err.response.data.msg;
+
         yield put({
             type: LOG_IN_FAIL,
-            error: err
+            error: errmsg
         });
     }
 }

@@ -10,7 +10,7 @@ const Login = () => {
     const [idText, setIdText] = useState('');
     const [pwText, setPwText] = useState('');
 
-    // const { user } = useSelector((state) => state.user);
+    const { user, loginErrmsg } = useSelector((state) => state.user);
 
     const onValueChange = useCallback((e) => {
         e.preventDefault();
@@ -46,6 +46,10 @@ const Login = () => {
     // useEffect(() => {
     //     console.log(user);
     // }, [user]);
+
+    useEffect(() => {
+        if (!!loginErrmsg) alert(loginErrmsg);
+    }, [loginErrmsg]);
 
     return (
         <Form onSubmit={login}>
